@@ -16,10 +16,10 @@
 
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
-    width = 1590,
-    height = 767,
+    width = 1900,
+    height = 940,
     player = {
-      x : width/2,
+      x : width/3,
       y : height - 50,
       width : 50,
       height : 50,
@@ -30,15 +30,15 @@ var canvas = document.getElementById("canvas"),
     },
     keys = [];
  friction = 0.8;
-gravity = 0.3
+gravity = 0.2
 canvas.width = width;
 canvas.height = height;
 
 
     obstacle = {
-      x : width/2,
+      x : width/4,
       y : height - 50,
-      width : 50,
+      width : 80,
       height : 50
 	  
 	  
@@ -57,13 +57,19 @@ function isOverlapping(player, obstacle){
 	oleft>pright ||
 	pbot>otop ||
 	obot>ptop)}
-
+	
+	
+function collide(pleft,pbot,pright,ptop,oleft,obot,oright,otop){
+	console.log(hi)
+	return  pleft<oleft + oright && pleft + pright > oleft
+	
+	}
 
 function update(){
 if (isOverlapping(player, obstacle)){
 console.log(hello)}
 		// check keys
-   if (keys[38]) {
+   if (keys[38] && collide) {
        // up arrow
    }
    if (keys[39]){
